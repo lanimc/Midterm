@@ -21,7 +21,7 @@ var app = {
         
     },
     getFood: function() {
-        $('#beertable').click(function() {
+        $('td').click(function() {
         
             //Clear any previous search results 
             $('.food').html('');
@@ -130,7 +130,7 @@ var app = {
                 $('.food').html("");
                 
                 var htmlString = '<table id = "foodtable" style="width:100%">';
-                htmlString +=	'<tr><th>Name</th><th>Image</th><tr>';
+                htmlString +=	'<tr><th>Name</th><th>Course</th><th>Image</th><tr>';
                 
 
 				
@@ -140,19 +140,23 @@ var app = {
                     var foodname = "Not Available"; 
                     var foodcourse = "Not Available";
                     var fimage = "fooddefault.jpg";
+                    var course = "Not Available";
                     
                     
                     //check if values in json return
-                    if (theDesserts.attributes && theDesserts.attributes.course  && theDesserts.attributes.course.includes("Desserts") ) {
-                        if(theDesserts.recipeName){
-                            foodname = theDesserts.recipeName}
+                    if (theDesserts[i].attributes && theDesserts[i].attributes.course){
+                        course = theDesserts[i].attributes.course
+                    }  
                         
-                        if (theBeers[i].labels){
+                        if(theDesserts[i].recipeName){
+                            foodname = theDesserts[i].recipeName}
+                        
+                        if (theDesserts[i].smallImageUrls){
                             fimage = theDesserts[i].smallImageUrls[0]}
-                    }
+                    
                     
                     //build the html string
-                    htmlString += '<tr class="row"><td>'+ foodname +'</td><td><img class = "blabel" src= ' + fimage +'></td></tr>'}
+                    htmlString += '<tr class="row"><td>'+ foodname +'<td>'+ course +'</td><td><img class = "blabel" src= ' + fimage +'></td></tr>'}
                 
                 htmlString += '</table>'
                 
