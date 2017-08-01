@@ -143,7 +143,7 @@ var app = {
                     
                     
                     //check if values in json return
-                    if (theDesserts.attributes && theDesserts.attributes.course.includes("Desserts")){
+                    if (theDesserts.attributes && theDesserts.attributes.course  && theDesserts.attributes.course.includes("Desserts") ) {
                         if(theDesserts.recipeName){
                             foodname = theDesserts.recipeName}
                         
