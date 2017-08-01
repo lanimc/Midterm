@@ -124,8 +124,8 @@ var app = {
                 
             success: function(data){
 				console.log("Got the data");
-				var theDesserts = data.data;
-				console.log(data);
+				var theDesserts = data.matches;
+				console.log(theDesserts);
                 
                 $('.food').html("");
                 
@@ -143,9 +143,9 @@ var app = {
                     
                     
                     //check if values in json return
-                    if (theDesserts[i].attributes )&& theDesserts[i].attribures.course.includes("Desserts"){
-                        if(theDesserts[i].recipeName){
-                            foodname = theDesserts[i].recipeName}
+                    if (theDesserts.attributes && theDesserts.attributes.course.includes("Desserts")){
+                        if(theDesserts.recipeName){
+                            foodname = theDesserts.recipeName}
                         
                         if (theBeers[i].labels){
                             fimage = theDesserts[i].smallImageUrls[0]}
@@ -157,7 +157,7 @@ var app = {
                 htmlString += '</table>'
                 
                 //append the string to the beers div
-                $('.beers').append(htmlString);
+                $('.food').append(htmlString);
                 
                 
             }
